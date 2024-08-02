@@ -1,0 +1,4 @@
+****** Invoice copy *******
+1. laptop 1 40000 40000
+
+Total: 40000
