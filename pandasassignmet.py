@@ -48,7 +48,20 @@ df = pd.read_csv("iris.csv")
 #5.3
 #print(df.groupby('Species')['Petal.Width'].agg(['min', 'max']))
 #5.4
-print(df.groupby('Species')['Sepal.Width'].mean().sort_values(ascending=False).head(5))
+#print(df.groupby('Species')['Sepal.Width'].mean().sort_values(ascending=False).head(5))
+
+def normalize_series(series):
+    return (series - series.min()) / (series.max() - series.min())
+
+df['sepal_length'] = normalize_series(df['sepal_length'])
+df['sepal_width'] = normalize_series(df['sepal_width'])
+df['petal_length'] = normalize_series(df['petal_length'])
+df['petal_width'] = normalize_series(df['petal_width'])
+
+# Create new column: ratio of petal length to petal width
+df['petal_length_to_width_ratio'] = df['petal_length'] / df['petal_width']
+
+print(df)
 
 
 
